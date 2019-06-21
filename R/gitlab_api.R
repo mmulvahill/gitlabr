@@ -183,9 +183,9 @@ is_single_row <- function(l) {
 }
 
 format_row <- function(row, ...) {
-  row %>%
-    lapply(unlist, use.names = FALSE, ...) %>%
-    tibble::as_data_frame(stringsAsFactors = FALSE)
+  
+  unlst <- lapply(row, unlist, use.names = FALSE, ...)
+  rtn   <- tibble::as_data_frame(as.data.frame(unlst, stringsAsFactors = FALSE))
 }
 
 json_to_flat_df <- function(l) {
